@@ -1,4 +1,4 @@
-name: Deploy IoT Hub (PoC Env 1)
+name: Deploy IoT Hub (PoC Env 2)
 
 on: workflow_dispatch
 
@@ -22,8 +22,8 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./IaC/poc1/main.bicep
-        parameters: ./IaC/poc1/azuredeploy.parameters.json
+        template: ./IaC/poc2/main.bicep
+        parameters: ./IaC/poc2/azuredeploy.parameters.json
 
 
   create-issue:
@@ -36,4 +36,4 @@ jobs:
         with:
           issue-title: "Deployment Failure: PoC Env - ${{ github.sha }}"
           issue-body: "Validate orchestration workflow"
-          repo-token: ${{secrets.GITHUB_TOKEN}}    
+          repo-token: ${{secrets.GITHUB_TOKEN}}  
