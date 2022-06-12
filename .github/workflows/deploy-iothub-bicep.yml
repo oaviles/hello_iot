@@ -22,8 +22,8 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./IaC/main.bicep
-        parameters: ./IaC/azuredeploy.parameters.json
+        template: ./IaC/poc1/main.bicep
+        parameters: ./IaC/poc1/azuredeploy.parameters.json
 
 
   create-issue:
