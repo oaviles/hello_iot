@@ -1,7 +1,7 @@
 @description('Define the project name or prefix for all objects.')
 @minLength(1)
 @maxLength(11)
-param projectName string = 'contoso'
+param projectName string = 'oaiot'
 
 @description('The datacenter to use for the deployment.')
 param location string = resourceGroup().location
@@ -15,7 +15,7 @@ param skuUnits int = 1
 @description('Partitions used for the event stream.')
 param d2cPartitions int = 4
 
-var iotHubName = '${projectName}Hub${uniqueString(resourceGroup().id)}'
+var iotHubName = '${projectName}Hub'
 var storageAccountName = '${toLower(projectName)}${uniqueString(resourceGroup().id)}'
 var storageEndpoint = '${projectName}StorageEndpont'
 var storageContainerName = '${toLower(projectName)}results'

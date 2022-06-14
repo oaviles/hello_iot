@@ -1,0 +1,38 @@
+name: Create Azure Resource Group
+
+on: workflow_dispatch
+
+env:
+  AZURE_RG: ${{ secrets.AZURE_RG }}
+
+jobs:
+
+  create-azure-rg:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0 # Optional
+          inlineScript: |
+            az group create --location eastus -n $AZURE_RG
+            
+  create-issue:
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
+    needs: [create-azure-rg]
+    steps:
+      - name: create-issue
+        uses: oaviles/issue_action@v1
+        with:
+          issue-title: "Resource Group creation fail: ${{ github.sha }}"
+          issue-body: "Validate orchestration workflow"
+          repo-token: ${{secrets.GITHUB_TOKEN}}
