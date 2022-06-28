@@ -27,7 +27,7 @@ jobs:
             
   deploying-iot-hub:
     runs-on: ubuntu-latest
-    if: ${{ failure() }}
+    if: ${{ success() }}
     needs: [depoying-iac-template]
     steps:
       # Checkout code
