@@ -46,7 +46,7 @@ resource streamingJob 'Microsoft.StreamAnalytics/streamingjobs@2021-10-01-previe
 }
 
 resource streamingjobs_oa_hotstream1_name_simulationinput 'Microsoft.StreamAnalytics/streamingjobs/inputs@2021-10-01-preview' = {
-  parent: streamingjobs_oa_hotstream1_name_resource
+  parent: streamingJob
   name: 'simulationinput'
   properties: {
     type: 'Stream'
