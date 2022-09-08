@@ -5,5 +5,8 @@
         "streamAnalyticsJobName": {
             "value": "oa-hotstream1"
         }
+        "numberOfStreamingUnits": {
+            "value": 1
+        }
       }
   }
