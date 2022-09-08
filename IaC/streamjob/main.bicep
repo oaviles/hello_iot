@@ -44,29 +44,3 @@ resource streamingJob 'Microsoft.StreamAnalytics/streamingjobs@2021-10-01-previe
     }
   }
 }
-
-resource streamingjobs_oa_hotstream1_name_simulationinput 'Microsoft.StreamAnalytics/streamingjobs/inputs@2021-10-01-preview' = {
-  parent: streamingJob
-  name: 'simulationinput'
-  properties: {
-    type: 'Stream'
-    datasource: {
-      type: 'Microsoft.Devices/IotHubs'
-      properties: {
-        iotHubNamespace: 'oaiot1'
-        sharedAccessPolicyName: 'service'
-        endpoint: 'messages/events'
-        consumerGroupName: '$Default'
-      }
-    }
-    compression: {
-      type: 'None'
-    }
-    serialization: {
-      type: 'Json'
-      properties: {
-        encoding: 'UTF8'
-      }
-    }
-  }
-}
